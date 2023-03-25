@@ -1,4 +1,4 @@
 **/.DS_Store
 **/ipynbs/.ipynb_checkpoints
 **/__pycache__
-**/resources/credentials.py
+**/pys/credentials.py
