@@ -4,19 +4,17 @@ import os
 
 def init():
 
-    # global model, scaler
+    global model, scaler
 
-    # # Load model
+    # Load model
 
-    # model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'handmade_model')
-    # model = joblib.load(model_path)
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'handmade_model')
+    model = joblib.load(model_path)
     
-    # # Load x_scaler
+    # Load x_scaler
 
-    # scaler_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'handmade_x_scaler')
-    # scaler = joblib.load(scaler_path)
-
-    print("This is init")
+    scaler_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'handmade_x_scaler')
+    scaler = joblib.load(scaler_path)
 
 
 def run(raw_data):
