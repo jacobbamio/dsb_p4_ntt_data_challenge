@@ -1,6 +1,7 @@
 import joblib
 import numpy as np
 import os
+import logging
 
 def init():
 
@@ -8,13 +9,15 @@ def init():
 
     # Load model
 
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'handmade_model')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.pkl')
     model = joblib.load(model_path)
     
     # Load x_scaler
 
-    scaler_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'handmade_x_scaler')
+    scaler_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'x_scaler.pkl')
     scaler = joblib.load(scaler_path)
+
+    logging.info("Init complete")
 
 
 def run(raw_data):
