@@ -1,0 +1,13 @@
+# conda.yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.9
+- pip
+- pip:
+  - joblib
+  - scikit-learn
+  - pandas
+  - numpy
+  - azureml-defaults
+name: cloudenv
