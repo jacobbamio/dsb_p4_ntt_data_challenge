@@ -41,9 +41,26 @@ if selected == "Home":
 
     st.title("Objective")
 
+    st.markdown("""The objective of this machine learning project is to predict whether clients will invest in a fixed deposit or not, using various data points related to the clients such as education level, job, marital 
+    status, and bank balance, among others. The project involves gathering and preprocessing the data, exploring and visualizing it to gain insights, selecting a suitable machine learning algorithm, training and evaluating 
+    the model, and ultimately using the model to make predictions on new data. The aim is to inform business decisions around marketing and sales efforts for fixed deposits based on the model's predictions.""")
+
     st.title("Source")
 
+    st.markdown("""The source of this project was provided by NTT data as a group test during a masterclass. We decided to go for it not just becouse it was a good practice but to prove ourselves that we are capable of doing a real world machine learning task.""")
+
     st.title("Tecnologies involved")
+
+    col_1, col_2 = st.columns(2)
+
+    col_1.markdown('🐍 Python')
+    col_1.markdown('🐼 Pandas')
+    col_1.markdown('🤖 Scikitlearn')
+    col_1.markdown('☁️ Azure')
+    col_2.markdown('〽️ Power BI')
+    col_2.markdown('🍃 MongoDB')
+    col_2.markdown('⏱️ Kronos?')
+    col_2.markdown('👑 Streamlit')
 
 
 elif selected == "Visualization":
@@ -55,20 +72,37 @@ elif selected == "Visualization":
     st.title("Exploratory Data Analysis")
 
 else:
-
     st.title("Pipelines")
+
+    st.markdown("""Once the Data was cleaned, we started trying different algorithms to see which one fitted for our data. """)
+
+    df = pd.read_csv("../resources/metricas.csv")
+    
+    with st.expander(label = "Models tried", expanded = False):
+        st.dataframe(df)
 
     bdt_image                 = Image.open("../resources/azure_snapshots/boosted_decision_tree.png")
     full_pipeline_image       = Image.open("../resources/azure_snapshots/full_pipeline.png")
     prediction_pipeline_image = Image.open("../resources/azure_snapshots/prediction_pipeline.png")
 
-    st.image(image = full_pipeline_image,       caption = "Azure Pipeline With 5 Different Models")
-    st.image(image = prediction_pipeline_image, caption = "Azure Pipeline Structured For Deployment")
-    st.image(image = bdt_image,                 caption = "Boosted Decision Tree Metrics")
 
-    df = pd.read_csv("../resources/metricas.csv")
+    st.markdown("""Then we got to versions of the model, one done by coding and the other one using Azure machine learning studio. You will be able to check either of them below.
+    Here an schema of the models trial:""")
+
+    with st.expander(label = "Azure in action", expanded = False):
+        st.image(image = full_pipeline_image,       caption = "Azure Pipeline With 5 Different Models")
     
-    st.dataframe(df)
+    st.markdown("""After that, it was time to try it with some predictions. here a guide of how it works:""")
+    
+    with st.expander(label = "Get the prediction", expanded = False):
+        st.image(image = prediction_pipeline_image, caption = "Azure Pipeline Structured For Deployment")
+
+    st.markdown("""Only one thing left, get the metrics to check how our model works, it turned out pretty well:""")
+
+    with st.expander(label = "Metrics", expanded = False):    
+        st.image(image = bdt_image,                 caption = "Boosted Decision Tree Metrics")
+
+    st.markdown("""There is a lot of work in betwen those steps like cleaning the data, decidig what to do with nans and outliers or validating and tuning the model but we only wanted to show you the best part""")
 
     st.title("Example clients")
 
