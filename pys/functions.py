@@ -68,7 +68,7 @@ def cosmos_request(cliente):
 
     model_input = clients_collection.find_one({"cliente":cliente})
 
-    if type(model_input) == None:
+    if type(model_input) != dict:
 
         return None
     
