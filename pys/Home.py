@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import os
 from PIL import Image
+import functions
 
 st.set_page_config(page_title="Home", page_icon="💰", )
 
@@ -56,10 +57,10 @@ if selected == "Home":
     col_1.markdown('🐍 Python')
     col_1.markdown('🐼 Pandas')
     col_1.markdown('🤖 Scikitlearn')
-    col_1.markdown('☁️ Azure')
+    col_1.markdown('☁️ Azure Machine Learning Studio')
     col_2.markdown('〽️ Power BI')
     col_2.markdown('🍃 MongoDB')
-    col_2.markdown('⏱️ Kronos?')
+    col_2.markdown('🌌 Azure Cosmos DB')
     col_2.markdown('👑 Streamlit')
 
 
@@ -105,6 +106,22 @@ else:
     st.markdown("""There is a lot of work in betwen those steps like cleaning the data, decidig what to do with nans and outliers or validating and tuning the model but we only wanted to show you the best part""")
 
     st.title("Example clients")
+
+    clients_col_1,clients_col_2,clients_col_3,clients_col_4,clients_col_5 = st.columns(5)
+
+    btc_c1  = clients_col_1.button(label = "Client 1")
+    btc_c2  = clients_col_1.button(label = "Client 6")
+    btc_c3  = clients_col_2.button(label = "Client 2")
+    btc_c4  = clients_col_2.button(label = "Client 7")
+    btc_c5  = clients_col_3.button(label = "Client 3")
+    btc_c6  = clients_col_3.button(label = "Client 8")
+    btc_c7  = clients_col_4.button(label = "Client 4")
+    btc_c8  = clients_col_4.button(label = "Client 9")
+    btc_c9  = clients_col_5.button(label = "Client 5")
+    btc_c10 = clients_col_5.button(label = "Client 10")
+
+
+
 
 
 
