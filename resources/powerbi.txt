@@ -1,2 +1,0 @@
-<iframe title="Report Section" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZjEzMjA0YzAtNTUwYi00Y2Y0LTliODEtZThkZjIyOTdlYTFhIiwidCI6ImY5N2FjMzMyLWQ2NzktNDFkMS1hNWIzLTU1MjgyNTdlMGQ3ZSIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
-

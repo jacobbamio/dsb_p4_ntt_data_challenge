@@ -24,6 +24,7 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
 
 from pymongo import MongoClient
+import requests
 
 import credentials
 import numpy as np
@@ -170,3 +171,4 @@ def handmade_model_request(scaled_input):
         # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
         print(error.info())
         print(error.read().decode("utf8", 'ignore'))
+
