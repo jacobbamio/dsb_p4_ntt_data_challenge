@@ -6,8 +6,12 @@ import numpy as np
 import os
 from PIL import Image
 import functions
+import joblib
 
 st.set_page_config(page_title="Home", page_icon="💰", )
+
+if 'scaler' not in st.session_state:
+    st.session_state.scaler = joblib.load("../resources/x_scaler.pkl")
 
 selected = option_menu(menu_title=None,
                        options=["Home", "Visualization", "Model"],
@@ -110,15 +114,225 @@ else:
     clients_col_1,clients_col_2,clients_col_3,clients_col_4,clients_col_5 = st.columns(5)
 
     btc_c1  = clients_col_1.button(label = "Client 1")
-    btc_c2  = clients_col_1.button(label = "Client 6")
-    btc_c3  = clients_col_2.button(label = "Client 2")
-    btc_c4  = clients_col_2.button(label = "Client 7")
-    btc_c5  = clients_col_3.button(label = "Client 3")
-    btc_c6  = clients_col_3.button(label = "Client 8")
-    btc_c7  = clients_col_4.button(label = "Client 4")
-    btc_c8  = clients_col_4.button(label = "Client 9")
-    btc_c9  = clients_col_5.button(label = "Client 5")
+    btc_c2  = clients_col_2.button(label = "Client 2")
+    btc_c3  = clients_col_3.button(label = "Client 3")
+    btc_c4  = clients_col_4.button(label = "Client 4")
+    btc_c5  = clients_col_5.button(label = "Client 5")
+    btc_c6  = clients_col_1.button(label = "Client 6")
+    btc_c7  = clients_col_2.button(label = "Client 7")
+    btc_c8  = clients_col_3.button(label = "Client 8")
+    btc_c9  = clients_col_4.button(label = "Client 9")
     btc_c10 = clients_col_5.button(label = "Client 10")
+
+    if btc_c1:
+
+        model_input  = functions.cosmos_request(1)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+            
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c2:
+
+        model_input  = functions.cosmos_request(2)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c3:
+
+        model_input  = functions.cosmos_request(3)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c4:
+
+        model_input  = functions.cosmos_request(4)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c5:
+
+        model_input  = functions.cosmos_request(5)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c6:
+
+        model_input  = functions.cosmos_request(6)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c7:
+
+        model_input  = functions.cosmos_request(7)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c8:
+
+        model_input  = functions.cosmos_request(8)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c9:
+
+        model_input  = functions.cosmos_request(9)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
+
+    elif btc_c10:
+
+        model_input  = functions.cosmos_request(10)
+
+        if model_input == None:
+
+            st.error("Try different clients slower, or the API won't provide more results")
+
+        else:
+        
+            scaled_input = functions.scale_model_input(model_input, st.session_state.scaler)
+            result       = functions.handmade_model_request(scaled_input)
+
+        if "n\'t" in result:
+
+            st.error(result)
+        
+        else:
+
+            st.success(result)
 
 
 

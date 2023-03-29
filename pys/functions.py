@@ -23,10 +23,14 @@ from sklearn.metrics import classification_report
 
 from sklearn.model_selection import GridSearchCV
 
-#import credentials
+from pymongo import MongoClient
 
+import credentials
+import numpy as np
 import pandas as pd
-
+import json
+import urllib
+import time
 
 def train_classification_models(X_train, y_train, X_test, y_test):
 
@@ -54,17 +58,100 @@ def train_classification_models(X_train, y_train, X_test, y_test):
 
     return df_metrics
 
-def cosmos_request():
+def cosmos_request(cliente):
 
-    credentials.cosmos
+    client = MongoClient(credentials.cosmos)
 
-    print("Pending")
+    db = client.db 
+
+    clients_collection = db.clients
+
+    model_input = clients_collection.find_one({"cliente":cliente})
+
+    if type(model_input) == None:
+
+        return None
+    
+    else:
+
+        del model_input["_id"]
+        del model_input["cliente"]
+
+    return model_input
+
+def scale_model_input(model_input, scaler):
+
+    input = []
+
+    for i in model_input:
+
+        input.append(model_input[i])
+
+    input = np.array([input])
+
+    scaled_input = scaler.transform(input)
+
+    for enum, i in enumerate(model_input):
+        
+        model_input[i] = scaled_input.tolist()[0][enum]
+
+    return model_input
 
 
-def mls_model_request():
+def mls_model_request(scaled_input):
 
-    print("Pending")
+    body = str.encode(json.dumps(scaled_input))
 
-def handmade_model_request():
+    url = credentials.mls_predict_rest_endpoint
+    # Replace this with the primary/secondary key or AMLToken for the endpoint
+    api_key = credentials.mls_predict_api_key
 
-    print("Pending")
+    if not api_key:
+        raise Exception("A key should be provided to invoke the endpoint")
+
+
+    headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+    req = urllib.request.Request(url, body, headers)
+
+    try:
+        response = urllib.request.urlopen(req)
+
+        result = response.read()
+        print(result)
+
+    except urllib.error.HTTPError as error:
+        print("The request failed with status code: " + str(error.code))
+
+        # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+        print(error.info())
+        print(error.read().decode("utf8", 'ignore'))
+
+def handmade_model_request(scaled_input):
+
+    body = str.encode(json.dumps(scaled_input))
+
+    url = credentials.azure_handmade_predict_rest_endpoint
+    # Replace this with the primary/secondary key or AMLToken for the endpoint
+    api_key = credentials.azure_handmade_predict_api_key
+
+    if not api_key:
+        raise Exception("A key should be provided to invoke the endpoint")
+
+
+    headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+    req = urllib.request.Request(url, body, headers)
+
+    try:
+        response = urllib.request.urlopen(req)
+
+        result = response.read()
+        return(json.loads(result.decode('utf-8')))
+
+    except urllib.error.HTTPError as error:
+        print("The request failed with status code: " + str(error.code))
+
+        # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+        print(error.info())
+        print(error.read().decode("utf8", 'ignore'))
