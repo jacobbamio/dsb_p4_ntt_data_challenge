@@ -100,7 +100,9 @@ def scale_model_input(model_input, scaler):
 
 def mls_model_request(scaled_input):
 
-    body = str.encode(json.dumps(scaled_input))
+    data = {"Inputs": {"input1" : [scaled_input]}, "GlobalParameters":{}}
+
+    body = str.encode(json.dumps(data))
 
     url = credentials.mls_predict_rest_endpoint
     # Replace this with the primary/secondary key or AMLToken for the endpoint
@@ -108,7 +110,6 @@ def mls_model_request(scaled_input):
 
     if not api_key:
         raise Exception("A key should be provided to invoke the endpoint")
-
 
     headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
@@ -118,7 +119,21 @@ def mls_model_request(scaled_input):
         response = urllib.request.urlopen(req)
 
         result = response.read()
-        print(result)
+        
+        result = json.loads(result.decode("utf-8"))
+
+        result = result["Results"]["WebServiceOutput0"][0]["Fixed Deposit Prediction"]
+
+        if result == 0.0:
+
+            output = "This client wouldn't contract the fixed deposit"
+
+        else:
+
+            output = "This client would contract the fixed deposit!"
+
+        return output
+
 
     except urllib.error.HTTPError as error:
         print("The request failed with status code: " + str(error.code))
