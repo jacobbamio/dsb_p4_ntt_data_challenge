@@ -23,7 +23,9 @@ from sklearn.metrics import classification_report
 
 from sklearn.model_selection import GridSearchCV
 
+#import credentials
 
+import pandas as pd
 
 
 def train_classification_models(X_train, y_train, X_test, y_test):
@@ -52,3 +54,17 @@ def train_classification_models(X_train, y_train, X_test, y_test):
 
     return df_metrics
 
+def cosmos_request():
+
+    credentials.cosmos
+
+    print("Pending")
+
+
+def mls_model_request():
+
+    print("Pending")
+
+def handmade_model_request():
+
+    print("Pending")
