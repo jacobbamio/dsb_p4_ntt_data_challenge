@@ -1,7 +1,5 @@
 
-<iframe  width="700" height="455" src="https://embed.lottiefiles.com/animation/119603"></iframe>
-
-</br>
+![alt image](/resources/intro_pic.png)
 
 [![python](https://img.shields.io/badge/python-3.9-428588?style=plastic&logo=python&labelColor=101010)]()
 [![numpy](https://img.shields.io/badge/numpy-1.21.5-428588?style=plastic&logo=numpy&labelColor=101010)]()
