@@ -2,7 +2,7 @@
 
 This project was developed with the motivation of overcoming a real case provided to us by [NTT DATA](https://es.nttdata.com) during a masterclass organized in their A Coruña headquarters.
 
-# Objective
+# Goal
 
 We had a lot of objectives here:
 
