@@ -1,5 +1,5 @@
 
-!<iframe  width="700" height="455" src="https://embed.lottiefiles.com/animation/119603"></iframe>
+<iframe  width="700" height="455" src="https://embed.lottiefiles.com/animation/119603"></iframe>
 
 [![python](https://img.shields.io/badge/python-3.9-428588?style=plastic&logo=python&labelColor=101010)]()
 [![numpy](https://img.shields.io/badge/numpy-1.21.5-428588?style=plastic&logo=numpy&labelColor=101010)]()
@@ -17,7 +17,7 @@ This project was developed with the motivation of overcoming a real case provide
 
 # Goal
 
-We had a lot of objectives here:
+We had a lot of goals here:
 
 * Being capable of solving the three challenges from NTT Data over this dataset:
 
